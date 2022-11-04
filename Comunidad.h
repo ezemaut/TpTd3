@@ -12,10 +12,10 @@ class Comunidad{
   public:
     Comunidad(); // O(1)
 
-    const set<int> & inscriptos() const; // O(1)
-    string obtener_empresa(int id) const; // O(log n)
+    const set<int> & inscriptos() const; // O(1) 1
+    string obtener_empresa(int id) const; // O(log n) 1
     const set<string> & obtener_socios(int id) const; // O(log n)
-    int cantidad_asociaciones() const; // O(1)
+    int cantidad_asociaciones() const; // O(1) 1
     int obtener_id(string empresa) const; // sin requerimiento
     bool es_empresa_popular(string empresa) const; // O(1) promedio
 
@@ -26,7 +26,15 @@ class Comunidad{
     
 
   private:
-    /* completar */
+    set<int> _inscriptos = {};//ids de empresas inscriptas
+    map<int,string> mapa_id_a_nombre = {}; //Clave es el id -> nombre de la empresa (obtener_empresa O(log n))
+    map<string,set<string>> mapa_asociaciones = {}; //Clave es el nombre -> direccion de set(obtener socios O(log n) n= size del map)
+    int _cantidad_asociaciones = 0; // cantidad_asociaciones() O(1)
+    unordered_set<string> Uset_empresas_populares = {}; // es_empresa_popular(string empresa) O(1) promedio
+
+
+
+
 };
 
 #endif
